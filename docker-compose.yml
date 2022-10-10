@@ -1,0 +1,14 @@
+version: '3'
+services:
+  db:
+    image: "mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: djinni
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    ports:
+      - "${MYSQL_PORT}:3306"
+    tty: true
+    volumes:
+      - "./db:/var/lib/mysql:cached"
