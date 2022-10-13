@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "name": "Djinni help",
+  "description": "A chrome extension 2",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["contextMenus", "search", "tabs", "webNavigation", "activeTab", "scripting"],
+  "action": {
+    "default_icon": {
+      "16": "img/icon.png",
+      "24": "img/icon.png",
+      "32": "img/icon.png"
+    }
+  }
+}
+
