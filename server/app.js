@@ -2,8 +2,13 @@
 
 const express = require('express');
 const cors = require('cors');
+const dotenv = require("dotenv");
+dotenv.config({ path: '../.env' });
 const sequelize = require('./dbConnection');
 const app = express();
+
+
+
 
 app.use(cors({ credentials: true, origin: true }));
 app.use(express.json());
@@ -28,5 +33,5 @@ app.post('/check', async (req, res) => {
 const PORT = process.env.SERVER_PORT || 8082;
 
 app.listen(PORT, () => {
-  console.log('Server running on http://localhost:8082');
+  console.log(`Server running on http://localhost:${PORT}`);
 });

@@ -1,9 +1,13 @@
 'use strict';
 const { Sequelize } = require('sequelize');
+console.log(
+    `mysql://${process.env.MYSQL_USER}:${process.env.MYSQL_PASS}@${process.env.MYSQL_HOST}:${process.env.MYSQL_PORT}/${process.env.MYSQL_SCHEMA}`
 
-//LOCAL CONNECTION
-const sequelize = new Sequelize('mysql://user:pass@127.0.0.1:3308/djinni');
-
+)
+const sequelize =
+    new Sequelize(
+        `mysql://${process.env.MYSQL_USER}:${process.env.MYSQL_PASS}@${process.env.MYSQL_HOST}:${process.env.MYSQL_PORT}/${process.env.MYSQL_SCHEMA}`
+    );
 const checkConnection = async () => {
   try {
     await sequelize.authenticate();

@@ -1,6 +1,5 @@
 'use strict';
 
-
 const markVacancy = (link, action) => {
   fetch('http://localhost:8082/mark', {
     method: 'POST',
