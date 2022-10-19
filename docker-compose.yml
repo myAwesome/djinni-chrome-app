@@ -3,10 +3,10 @@ services:
   db:
     image: "mysql"
     environment:
-      MYSQL_ROOT_PASSWORD: pass
-      MYSQL_DATABASE: djinni
-      MYSQL_USER: user
-      MYSQL_PASSWORD: pass
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASS}
+      MYSQL_DATABASE: ${MYSQL_SCHEMA}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASS}
     ports:
       - "${MYSQL_PORT}:3306"
     tty: true

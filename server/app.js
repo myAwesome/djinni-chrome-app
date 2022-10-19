@@ -7,9 +7,6 @@ dotenv.config({ path: '../.env' });
 const sequelize = require('./dbConnection');
 const app = express();
 
-
-
-
 app.use(cors({ credentials: true, origin: true }));
 app.use(express.json());
 
