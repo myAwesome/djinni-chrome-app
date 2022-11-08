@@ -10,10 +10,18 @@ if (window.location.host === "djinni.co"){
 }
 
 chrome.runtime.onMessage.addListener(msg => {
-    applyCss();
-    paintVacancies(document.body.getElementsByClassName("list-jobs")[0], msg);
+    if (msg.success){
+        applyCss();
+        paintVacancies(document.body.getElementsByClassName("list-jobs")[0], msg);
+    } else {
+        showErrorPopup();
+    }
     return Promise.resolve('Dummy response to keep the console quiet');
 });
+
+function showErrorPopup(){
+    document.body.innerHTML ='<div>Server stopped</div>';
+}
 
 function paintVacancies(jobList, msg){
     const jobs = jobList.getElementsByClassName('profile');

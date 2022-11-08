@@ -10,6 +10,9 @@ const app = express();
 app.use(cors({ credentials: true, origin: true }));
 app.use(express.json());
 
+app.get('/ping', async (req, res) => {
+  res.json('pong')
+})
 
 app.post('/mark', async (req, res) => {
   const link = req.body.link;

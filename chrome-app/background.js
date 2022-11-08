@@ -43,7 +43,7 @@ chrome.action.onClicked.addListener(
 
 
 chrome.runtime.onMessage.addListener((msg, sender) => {
-  console.log(msg)
+
   fetch('http://localhost:8082/check', {
     method: 'POST',
     headers: {
@@ -53,8 +53,10 @@ chrome.runtime.onMessage.addListener((msg, sender) => {
     body: JSON.stringify(msg) })
       .then(res => res.json())
       .then(data => {
-        chrome.tabs.sendMessage(sender.tab.id, data);
-      });
+        chrome.tabs.sendMessage(sender.tab.id, {success: true, data});
+      }).catch(e=>{
+      chrome.tabs.sendMessage(sender.tab.id, {success:false});
+  });
 
   return Promise.resolve('Dummy response to keep the console quiet');
 });
