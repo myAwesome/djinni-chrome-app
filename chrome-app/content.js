@@ -20,7 +20,67 @@ chrome.runtime.onMessage.addListener(msg => {
 });
 
 function showErrorPopup(){
-    document.body.innerHTML ='<div>Server stopped</div>';
+    const html = `
+<style>
+        #overlay {
+            display: none;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            background: #999;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+            z-index: 100;
+        }
+
+        #popup {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background: #f99;
+            width: 500px;
+            height: 100px;
+            margin-left: -250px; 
+            margin-top: -250px; 
+            z-index: 200;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        #popupclose {
+            float: right;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .popupcontent {
+            padding: 10px;
+        }
+    </style>
+<div id="overlay"></div>
+<div id="popup">
+    <div class="popupcontrols">
+        <span id="popupclose">X</span>
+    </div>
+    <div class="popupcontent">
+        Server stopped
+    </div>
+</div>`
+    document.body.innerHTML += html;
+    const closePopup = document.getElementById("popupclose");
+    const overlay = document.getElementById("overlay");
+    const popup = document.getElementById("popup");
+
+    const showPopup = () => {
+        overlay.style.display = 'block';
+        popup.style.display = 'block';
+    }
+
+    closePopup.onclick = function() {
+        overlay.style.display = 'none';
+        popup.style.display = 'none';
+    };
+    showPopup();
 }
 
 function paintVacancies(jobList, msg){
