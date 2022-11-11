@@ -12,7 +12,7 @@ if (window.location.host === "djinni.co"){
 chrome.runtime.onMessage.addListener(msg => {
     if (msg.success){
         applyCss();
-        paintVacancies(document.body.getElementsByClassName("list-jobs")[0], msg);
+        paintVacancies(document.body.getElementsByClassName("list-jobs")[0], msg.data);
     } else {
         showErrorPopup();
     }
